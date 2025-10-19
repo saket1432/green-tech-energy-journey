@@ -2,10 +2,6 @@
 
 A modern, interactive web portfolio showcasing renewable energy sources and sustainable solutions. This project explores three key renewable energy technologies through detailed explanations, block diagrams, and real-world applications.
 
-## 🚀 Live Demo
-
-Open `index.html` in your web browser to view the interactive portfolio.
-
 ## 📋 Project Overview
 
 This portfolio website presents comprehensive information about renewable energy sources, designed as an educational resource for understanding sustainable energy solutions. The project covers three main renewable energy technologies:
@@ -50,22 +46,6 @@ This portfolio website presents comprehensive information about renewable energy
 ### Prerequisites
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 - No additional software required
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd clean_and_green_energy_code
-   ```
-
-3. Open `index.html` in your web browser:
-   ```bash
-   open index.html
-   ```
 
 ## 📁 Project Structure
 
@@ -126,13 +106,8 @@ This project is created for educational purposes. Feel free to use and modify fo
 ## 👨‍💻 Author
 
 **Devarasetty Saket**
-- Renewable Energy Portfolio Project
+- Renewable Energy Project
 - Focus: Sustainable Energy Solutions
-
-## 🔗 Links
-
-- [Live Demo](https://your-username.github.io/repo-name) - *Add your GitHub Pages URL here*
-- [Repository](https://github.com/your-username/repo-name) - *Add your GitHub repository URL here*
 
 ---
 
