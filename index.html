@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio by Devarasetty Saket</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            color: #1e293b; 
+            line-height: 1.6; 
+            animation: fadeIn 1s ease-in; 
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(102, 187, 106, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+            animation: floatParticles 20s ease-in-out infinite;
+            z-index: -1;
+        }
+        @keyframes floatParticles {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .container { display: flex; min-height: 100vh; }
+        .sidebar { 
+            width: 280px; 
+            background: linear-gradient(180deg, #1e293b 0%, #334155 100%); 
+            padding: 25px; 
+            box-sizing: border-box; 
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
+        }
+        .sidebar h2 { 
+            color: #f1f5f9; 
+            margin-bottom: 25px; 
+            text-align: center; 
+            font-size: 1.4em; 
+            font-weight: 600; 
+        }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar li { margin: 12px 0; }
+        .sidebar a { 
+            color: #cbd5e1; 
+            text-decoration: none; 
+            font-weight: 500; 
+            display: block; 
+            padding: 15px 20px; 
+            border-radius: 12px; 
+            background: rgba(255,255,255,0.05); 
+            transition: all 0.3s ease; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            cursor: pointer; 
+            text-align: left; 
+            backdrop-filter: blur(10px);
+        }
+        .sidebar a:hover, .sidebar a.active { 
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); 
+            color: #ffffff; 
+            transform: translateX(5px); 
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3); 
+        }
+        .content { 
+            flex: 1; 
+            padding: 30px; 
+            background: #ffffff; 
+        }
+        .page { display: none; animation: fadeInUp 0.6s ease-out; }
+        .page.active { display: block; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        header { 
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%); 
+            color: #f1f5f9; 
+            text-align: center; 
+            padding: 50px 30px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1); 
+            animation: slideDown 1s ease-out; 
+            margin-bottom: 30px; 
+            border-radius: 20px; 
+        }
+        @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.8em; 
+            font-weight: 700; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
+        }
+        header p { 
+            font-size: 1.3em; 
+            margin: 15px 0; 
+            max-width: 900px; 
+            margin: 15px auto; 
+            opacity: 0.9; 
+        }
+        section { 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
+            border: 1px solid #e2e8f0; 
+            margin-bottom: 20px;
+        }
+        section h2 { 
+            color: #ffffff; 
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%); 
+            border-bottom: none; 
+            padding: 20px 25px; 
+            font-size: 2em; 
+            font-weight: 600; 
+            margin-bottom: 25px; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        section h3 {
+            color: #3b82f6;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        section h2 i { 
+            color: #ffffff; 
+            margin-right: 15px; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .diagram { 
+            text-align: center; 
+            margin: 30px 0; 
+            background: #ffffff; 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 2px solid #e2e8f0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .diagram-block {
+            background: #e6ffe6;
+            border: 2px solid #66bb6a;
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            min-width: 150px;
+            box-shadow: 0 2px 8px rgba(102, 187, 106, 0.2);
+            transition: all 0.3s ease;
+        }
+        .diagram-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 187, 106, 0.3);
+        }
+        .diagram-arrow {
+            font-size: 1.5em;
+            color: #66bb6a;
+            margin: 0 10px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .diagram h3 {
+            color: #66bb6a;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        .diagram p {
+            margin-top: 20px;
+            font-style: italic;
+            color: #64748b;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .progress-container {
+            margin: 20px 0;
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+            animation: progressGlow 2s ease-in-out;
+        }
+        @keyframes progressGlow {
+            0% { box-shadow: 0 0 0 rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+            100% { box-shadow: 0 0 0 rgba(59, 130, 246, 0.5); }
+        }
+        .progress-label {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        .icon { 
+            font-size: 2.2em; 
+            color: #3b82f6; 
+            margin-bottom: 15px; 
+            animation: bounce 2s infinite; 
+        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        footer { 
+            text-align: center; 
+            padding: 25px; 
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%); 
+            color: #f1f5f9; 
+            font-weight: 500; 
+            box-shadow: 0 -8px 32px rgba(0,0,0,0.1); 
+            margin-top: 30px; 
+            border-radius: 20px; 
+        }
+        .glossary-container {
+            display: grid;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .glossary-item {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .glossary-item h3 {
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+        .timeline-container {
+            position: relative;
+            margin: 20px 0;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3b82f6;
+        }
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3b82f6;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .timeline-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .references-container {
+            display: grid;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .reference-item {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .reference-item h3 {
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+        .reference-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .reference-item li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .reference-item a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        .reference-item a:hover {
+            color: #1d4ed8;
+            border-bottom: 1px solid #3b82f6;
+            transform: translateX(5px);
+        }
+        @media (max-width: 768px) { 
+            .container { flex-direction: column; } 
+            .sidebar { width: 100%; border-right: none; border-bottom: 2px solid #334155; } 
+            .sidebar a { display: inline-block; width: 30%; margin: 5px; } 
+            .content { padding: 20px; }
+            section { padding: 25px; }
+            .timeline-item { padding-left: 60px; }
+            .timeline-year { font-size: 0.8em; padding: 6px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Homepage</a></li>
+                <li><a href="#" class="nav-link" data-page="activity1">Activity 1 – Tidal Energy</a></li>
+                <li><a href="#" class="nav-link" data-page="activity2">Activity 2 – Biomass</a></li>
+                <li><a href="#" class="nav-link" data-page="activity3">Activity 3 – Geothermal</a></li>
+                <li><a href="#" class="nav-link" data-page="glossary">Glossary</a></li>
+                <li><a href="#" class="nav-link" data-page="timeline">Timeline</a></li>
+                <li><a href="#" class="nav-link" data-page="references">References</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <!-- Homepage -->
+            <div id="home" class="page active">
+                <header>
+                    <h1>Devarasetty Saket</h1>
+                    <p>Renewable energy harnesses nature's power to create sustainable solutions, reducing our reliance on fossil fuels and combating climate change through innovative systems like tidal, biomass, and geothermal technologies.</p>
+                </header>
+            </div>
+            
+            <!-- Activity 1 -->
+            <div id="activity1" class="page">
+                <section>
+                    <h2>Activity 1 – Tidal Energy: Tidal Power Plant for a Coastal Village</h2>
+                    <div class="diagram">
+                        <h3>Tidal Energy Flow Diagram</h3>
+                        <div class="diagram-container">
+                            <div class="diagram-block">Tidal Source<br>(Ocean Tides)</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Turbine/Generator</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Electricity Output</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Grid/Utilization</div>
+                        </div>
+                        <p><strong>Process Flow:</strong> Tidal barrage captures water flow → Turbines generate electricity → Grid distribution to village</p>
+                    </div>
+                    <h3>Source of Energy</h3>
+                    <p>Tidal energy is derived from the gravitational pull of the moon and sun on ocean waters, creating predictable tidal flows in coastal areas. This renewable source is reliable and high-density, ideal for villages near estuaries or bays where tides rise and fall by several meters daily. The kinetic energy from tidal movements provides a constant, renewable power source that is completely independent of weather conditions.</p>
+                    
+                    <h3>Conversion Process</h3>
+                    <p>The conversion process involves a tidal barrage or submerged turbine system that captures kinetic energy from incoming and outgoing tides. Water flows through sluice gates into a basin, spinning turbines connected to generators. Electromagnetic induction converts mechanical rotation into AC electricity, which is then rectified and inverted for stable grid-compatible power. For a coastal village, the system integrates with local infrastructure, using transformers to step up voltage for distribution.</p>
+                    
+                    <h3>Output/Utilization</h3>
+                    <p>Outputs include clean electricity (typically 1-10 MW for a small plant, sufficient for 500-1000 households), reducing fossil fuel dependency. The system provides power for homes, streetlights, and small pumps. Excess energy is stored in batteries to ensure supply during low-tide periods, creating a reliable energy supply for coastal communities.</p>
+                    
+                    <h3>Real-World Application Relevance</h3>
+                    <p>Real-world relevance is evident in projects like France's Rance Tidal Power Station, which has operated since 1966, powering communities sustainably. In developing coastal villages, such as those in India or the UK, tidal plants provide energy security, lower emissions, and economic benefits through job creation in maintenance. Challenges like high upfront costs are mitigated by long-term savings and environmental benefits, making it a scalable solution for isolated areas prone to energy shortages.</p>
+                </section>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div id="activity2" class="page">
+                <section>
+                    <h2>Activity 2 – Biomass: Biogas Generation System for a Dairy Farm</h2>
+                    <div class="diagram">
+                        <h3>Biomass Energy Flow Diagram</h3>
+                        <div class="diagram-container">
+                            <div class="diagram-block">Organic Matter<br>(Plants/Waste)</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Combustion/<br>Digestion</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Heat/Energy<br>Conversion</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Electricity/<br>Biofuels</div>
+                        </div>
+                        <p><strong>Process Flow:</strong> Manure feedstock → Anaerobic digester → Biogas storage → Generator for electricity and fertilizer output</p>
+                    </div>
+                    <h3>Source of Energy</h3>
+                    <p>Biomass energy derives from organic matter, specifically cattle manure in this case, which is a plentiful byproduct on dairy farms. For a farm with 100 cattle, daily manure production (around 2-3 tons) serves as a sustainable feedstock, rich in carbon and nutrients for energy conversion. This organic matter contains stored solar energy captured through photosynthesis, making it a renewable energy source that can be continuously replenished through agricultural activities.</p>
+                    
+                    <h3>Conversion Process</h3>
+                    <p>The process begins with anaerobic digestion in a sealed tank, where microorganisms break down the manure in oxygen-free conditions through stages like hydrolysis (breaking down complex organics) and methanogenesis (producing methane gas). This fermentation yields biogas, primarily methane (50-70% composition), which is scrubbed to remove impurities like hydrogen sulfide before storage in tanks. The biogas is then fed into an internal combustion engine or generator, converting chemical energy into mechanical and electrical power via combustion and electromagnetic induction.</p>
+                    
+                    <h3>Output/Utilization</h3>
+                    <p>Outputs include electricity (sufficient for farm lighting/pumps, ~10-50 kW daily) and heat (from engine exhaust for warming barns). The digestate slurry, a nutrient-rich byproduct, is utilized as bio-fertilizer to enhance soil fertility on the farm. This creates a circular economy where waste is transformed into valuable resources, providing both energy and agricultural benefits.</p>
+                    
+                    <h3>Real-World Application Relevance</h3>
+                    <p>Real-world applications are evident in agricultural regions like India and Europe, where biogas plants on dairy farms reduce methane emissions (a potent greenhouse gas) and provide energy independence. For example, projects in Germany have scaled this for community grids, cutting fossil fuel use by 30-50% while improving waste management. This system promotes circular economy principles, turning waste into resources, and is ideal for rural areas lacking grid access, fostering sustainable farming and economic benefits.</p>
+                </section>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div id="activity3" class="page">
+                <section>
+                    <h2>Activity 3 – Geothermal: Geothermal Power Plant for Electricity Generation</h2>
+                    <div class="diagram">
+                        <h3>Geothermal Energy Flow Diagram</h3>
+                        <div class="diagram-container">
+                            <div class="diagram-block">Earth's Heat/<br>Ocean Temp Diff</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Heat Exchanger/<br>Turbine</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Steam/<br>Electricity</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-block">Power Grid/<br>Heating</div>
+                        </div>
+                        <p><strong>Process Flow:</strong> Hot water wells → Heat exchanger → Turbine/generator → Condenser and reinjection for electricity output</p>
+                    </div>
+                    <h3>Source of Energy</h3>
+                    <p>Geothermal energy originates from Earth's internal heat, accessed via hot water wells in volcanic or tectonically active regions. This constant, renewable source provides reliable baseload power without weather dependency. The energy comes from the natural heat stored in the Earth's core and mantle, which is continuously generated by radioactive decay and residual heat from planetary formation, making it an inexhaustible energy source.</p>
+                    
+                    <h3>Conversion Process</h3>
+                    <p>The conversion process involves drilling wells to extract hot water or steam (typically 150-300°C). The fluid is pumped to the surface and passed through a heat exchanger, where it vaporizes a working fluid like water or isobutane. The vapor expands through a turbine, spinning a generator to produce electricity via electromagnetic induction. After powering the turbine, the fluid is condensed and reinjected into the earth to maintain reservoir pressure and sustainability.</p>
+                    
+                    <h3>Output/Utilization</h3>
+                    <p>Outputs include clean electricity (from small plants at 1-50 MW, suitable for regional grids) and sometimes heat for direct use. The system provides reliable power for rural electrification, agriculture (via irrigation pumps), and industry, while minimizing land use compared to other renewables. The consistent energy output makes it ideal for baseload power generation.</p>
+                    
+                    <h3>Real-World Application Relevance</h3>
+                    <p>Real-world relevance is high in areas like Iceland or Kenya, where geothermal plants (e.g., The Geysers in California) supply 20-30% of national energy, reducing fossil fuel imports and emissions. For regions with hot wells, it supports rural electrification, agriculture, and industry. Challenges like drilling costs are offset by low operational expenses and longevity (plants last 20-50 years). This system enhances energy security in geothermal-rich zones, promoting sustainable development and climate resilience.</p>
+                </section>
+            </div>
+            
+            <!-- Glossary -->
+            <div id="glossary" class="page">
+                <section>
+                    <h2>Technical Terms Glossary</h2>
+                    <div class="glossary-container">
+                        <div class="glossary-item">
+                            <h3>Anaerobic Digestion</h3>
+                            <p>Process where microorganisms break down organic matter in the absence of oxygen, producing biogas.</p>
+                        </div>
+                        <div class="glossary-item">
+                            <h3>Electromagnetic Induction</h3>
+                            <p>Process of generating electric current by moving a conductor through a magnetic field.</p>
+                        </div>
+                        <div class="glossary-item">
+                            <h3>Geothermal Gradient</h3>
+                            <p>Rate of temperature increase with depth in the Earth's crust.</p>
+                        </div>
+                        <div class="glossary-item">
+                            <h3>Tidal Barrage</h3>
+                            <p>Dam-like structure that captures tidal energy by controlling water flow.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Timeline -->
+            <div id="timeline" class="page">
+                <section>
+                    <h2>Renewable Energy Development Timeline</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1966</div>
+                            <div class="timeline-content">
+                                <h3>First Tidal Power Station</h3>
+                                <p>La Rance Tidal Power Station begins operation in France</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1970s</div>
+                            <div class="timeline-content">
+                                <h3>Geothermal Expansion</h3>
+                                <p>Iceland begins large-scale geothermal development</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1990s</div>
+                            <div class="timeline-content">
+                                <h3>Biomass Technology</h3>
+                                <p>Advanced biogas systems developed in Europe</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020s</div>
+                            <div class="timeline-content">
+                                <h3>Modern Integration</h3>
+                                <p>Smart grid integration and energy storage solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- References -->
+            <div id="references" class="page">
+                <section>
+                    <h2>References and Sources</h2>
+                    <div class="references-container">
+                        <div class="reference-item">
+                            <h3>Academic Sources</h3>
+                            <ul>
+                                <li><a href="https://www.iea.org/topics/renewables" target="_blank" rel="noopener noreferrer">International Energy Agency (IEA) - Renewable Energy Reports</a></li>
+                                <li><a href="https://www.unep.org/explore-topics/energy" target="_blank" rel="noopener noreferrer">United Nations Environment Programme - Energy Statistics</a></li>
+                                <li><a href="https://www.sciencedirect.com/journal/renewable-energy" target="_blank" rel="noopener noreferrer">Journal of Renewable Energy - Peer-reviewed Articles</a></li>
+                                <li><a href="https://www.nature.com/subjects/renewable-energy" target="_blank" rel="noopener noreferrer">Nature - Renewable Energy Research</a></li>
+                            </ul>
+                        </div>
+                        <div class="reference-item">
+                            <h3>Technical Documentation</h3>
+                            <ul>
+                                <li><a href="https://www.edf.fr/en/the-edf-group/industrial-expertise/power-generation-thermal-and-nuclear/la-rance-tidal-power-station" target="_blank" rel="noopener noreferrer">La Rance Tidal Power Station - Technical Specifications</a></li>
+                                <li><a href="https://www.nea.is/geothermal/" target="_blank" rel="noopener noreferrer">Iceland Geothermal Energy - Case Studies</a></li>
+                                <li><a href="https://www.energy.gov/eere/bioenergy/biomass-basics" target="_blank" rel="noopener noreferrer">Biomass Energy Systems - Design Guidelines</a></li>
+                                <li><a href="https://www.nrel.gov/research/re-news/" target="_blank" rel="noopener noreferrer">NREL - Renewable Energy Research</a></li>
+                            </ul>
+                        </div>
+                        <div class="reference-item">
+                            <h3>Government & Policy Sources</h3>
+                            <ul>
+                                <li><a href="https://www.energy.gov/eere/renewables" target="_blank" rel="noopener noreferrer">U.S. Department of Energy - Renewable Energy</a></li>
+                                <li><a href="https://ec.europa.eu/energy/topics/renewable-energy_en" target="_blank" rel="noopener noreferrer">European Commission - Renewable Energy Policy</a></li>
+                                <li><a href="https://www.irena.org/" target="_blank" rel="noopener noreferrer">International Renewable Energy Agency (IRENA)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+        </main>
+    </div>
+    <footer>
+        <p>Created by Devarasetty Saket | Portfolio</p>
+    </footer>
+    
+    <script>
+        // JavaScript for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update active link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
